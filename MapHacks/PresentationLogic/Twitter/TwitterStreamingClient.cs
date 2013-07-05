@@ -120,7 +120,8 @@ namespace MapHacks.PresentationLogic.Twitter
 		{
 			request.StreamOptions = options;
 			request.Method = WebMethod.Post;
-			request.AddParameter("track", "twitter");
+			//request.AddParameter("track", "twitter");
+			request.AddParameter("locations", "-122.75,36.8,-121.75,37.8");
 
 			return client.BeginRequest(request, new RestCallback<T>((req, resp, state) =>
 			{

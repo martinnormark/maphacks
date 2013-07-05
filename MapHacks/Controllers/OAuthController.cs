@@ -1,4 +1,6 @@
-﻿using MapHacks.PresentationLogic.Twitter;
+﻿using MapHacks.Hubs;
+using MapHacks.PresentationLogic.Twitter;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -57,6 +59,10 @@ namespace MapHacks.Controllers
 			TwitterStreamingClient streamClient = new TwitterStreamingClient("Map hacks", this._consumerKey, this._consumerSecret, new Hammock.Authentication.OAuth.OAuthToken { Token = accessToken.Token, TokenSecret = accessToken.TokenSecret });
 			IAsyncResult result = streamClient.StreamFilter("track=twitter", (artifact, response) =>
 			{
+				TwitterStatus status = service.Deserialize<TwitterStatus>(response.Response);
+
+				IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<GeoFeedHub>();
+				hubContext.Clients.All.addTweetToMap(status);
 			});
 
 			IAsyncResult asyncResult = await Task.FromResult(result);
@@ -74,6 +80,7 @@ namespace MapHacks.Controllers
 		private TwitterService GetTwitterService()
 		{
 			TwitterService service = new TwitterService(this._consumerKey, this._consumerSecret);
+
 			return service;
 		}
 	}

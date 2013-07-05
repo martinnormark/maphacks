@@ -165,6 +165,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\GeoFeedHub.cs" />
+    <Compile Include="PresentationLogic\Extensions\StringExtensions.cs" />
+    <Compile Include="PresentationLogic\Extensions\TimeExtensions.cs" />
+    <Compile Include="PresentationLogic\Twitter\TwitterClientInfo.cs" />
+    <Compile Include="PresentationLogic\Twitter\TwitterResponse.cs" />
+    <Compile Include="PresentationLogic\Twitter\TwitterStreamingClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

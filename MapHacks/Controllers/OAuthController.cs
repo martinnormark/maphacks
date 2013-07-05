@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MapHacks.PresentationLogic.Twitter;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TweetSharp;
@@ -40,7 +42,7 @@ namespace MapHacks.Controllers
 			return new RedirectResult(uri.ToString(), false);
 		}
 
-		public ActionResult Callback(string oauth_token, string oauth_verifier)
+		public async Task<ActionResult> Callback(string oauth_token, string oauth_verifier)
 		{
 			var requestToken = new OAuthRequestToken { Token = oauth_token };
 
@@ -52,14 +54,21 @@ namespace MapHacks.Controllers
 			service.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
 			TwitterUser user = service.GetUserProfile(new GetUserProfileOptions());
 
+			TwitterStreamingClient streamClient = new TwitterStreamingClient("Map hacks", this._consumerKey, this._consumerSecret, new Hammock.Authentication.OAuth.OAuthToken { Token = accessToken.Token, TokenSecret = accessToken.TokenSecret });
+			IAsyncResult result = streamClient.StreamFilter("track=twitter", (artifact, response) =>
+			{
+			});
+
+			IAsyncResult asyncResult = await Task.FromResult(result);
+
 			ViewBag.Message = string.Format("Your username is {0}", user.ScreenName);
 
-			return View();
+			return RedirectToAction("Index", "Home");
 		}
 
 		private string GetCallbackUrl()
 		{
-			return String.Format("{0}://{1}/Callback", Request.Url.Scheme, Request.Url.Host);
+			return String.Format("{0}://{1}:{2}/oauth/callback", Request.Url.Scheme, Request.Url.Host, Request.Url.Port);
 		}
 
 		private TwitterService GetTwitterService()

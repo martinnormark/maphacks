@@ -1,0 +1,26 @@
+﻿html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map-canvas, #map_canvas {
+	height: 100%;
+	width: 100%;
+}
+
+	#map-canvas img {
+		max-width: none;
+	}
+
+#panel {
+	position: absolute;
+	top: 25px;
+	left: 95px;
+	z-index: 5;
+}
+
+	#panel input {
+		margin: 0;
+		height: 34px;
+	}

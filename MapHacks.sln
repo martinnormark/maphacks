@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapHacks", "MapHacks\MapHacks.csproj", "{F0F735DA-54C0-44C4-8891-5978E396738A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0F735DA-54C0-44C4-8891-5978E396738A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0F735DA-54C0-44C4-8891-5978E396738A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0F735DA-54C0-44C4-8891-5978E396738A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0F735DA-54C0-44C4-8891-5978E396738A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

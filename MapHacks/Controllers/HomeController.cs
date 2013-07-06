@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MapHacks.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,12 @@ namespace MapHacks.Controllers
 		// GET: /Home/
 		public ActionResult Index()
 		{
-			return View();
+			var viewModel = new AppViewModel
+			{
+				UserDetails = Session["UserDetails"] as UserDetailsViewModel
+			};
+
+			return View(viewModel);
 		}
 	}
 }

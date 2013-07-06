@@ -165,8 +165,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\GeoFeedHub.cs" />
+    <Compile Include="Models\AppViewModel.cs" />
+    <Compile Include="Models\UserDetailsViewModel.cs" />
     <Compile Include="PresentationLogic\Extensions\StringExtensions.cs" />
     <Compile Include="PresentationLogic\Extensions\TimeExtensions.cs" />
+    <Compile Include="PresentationLogic\Twitter\RealTimeStreamNotifier.cs" />
     <Compile Include="PresentationLogic\Twitter\TwitterClientInfo.cs" />
     <Compile Include="PresentationLogic\Twitter\TwitterResponse.cs" />
     <Compile Include="PresentationLogic\Twitter\TwitterStreamingClient.cs" />
@@ -242,6 +245,7 @@
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\App\app.js" />
     <Content Include="Scripts\App\Views\AppView.js" />
+    <Content Include="Scripts\App\Views\LoginView.js" />
     <Content Include="Scripts\App\Views\MapView.js" />
     <Content Include="Scripts\App\Views\SearchBarView.js" />
     <Content Include="Scripts\App\Views\SearchResultsView.js" />
@@ -280,7 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Scripts\App\Models\" />
   </ItemGroup>
   <ItemGroup>

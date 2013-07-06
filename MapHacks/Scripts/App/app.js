@@ -8,19 +8,8 @@
 	};
 
 	function initializeApp() {
-
-		var appView = new window.maphacks.Views.AppView();
+		var appView = new window.maphacks.Views.AppView({ user: window.currentUser });
 		appView.render();
-
-		/*var geoFeedHubProxy = $.connection.geoFeedHub;
-
-		geoFeedHubProxy.client.addTweetToMap = function (tweet) {
-			console.log(tweet);
-		};
-
-		$.connection.hub.start()
-				.done(function (result) { console.log('Now connected, connection ID=' + $.connection.hub.id); })
-				.fail(function(){ console.log('Could not Connect!'); });*/
 	}
 
 	function loadScript() {

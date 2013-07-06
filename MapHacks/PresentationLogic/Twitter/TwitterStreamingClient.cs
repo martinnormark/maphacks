@@ -4,11 +4,7 @@ using Hammock.Streaming;
 using Hammock.Web;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Web;
 using TweetSharp;
 
 namespace MapHacks.PresentationLogic.Twitter
@@ -26,12 +22,12 @@ namespace MapHacks.PresentationLogic.Twitter
 
 		private readonly JsonSerializer _jsonSerializer;
 
-		public TwitterStreamingClient(string clientName, string consumerKey, string consumerSecret, OAuthToken accessToken)
+		public TwitterStreamingClient(string clientName, string consumerKey, string consumerSecret, string accessToken, string accessTokenSecret)
 		{
 			this._consumerKey = consumerKey;
 			this._consumerSecret = consumerSecret;
-			this._oauthToken = accessToken.Token;
-			this._oauthTokenSecret = accessToken.TokenSecret;
+			this._oauthToken = accessToken;
+			this._oauthTokenSecret = accessTokenSecret;
 
 			this._info = new TwitterClientInfo
 			{
@@ -120,8 +116,8 @@ namespace MapHacks.PresentationLogic.Twitter
 		{
 			request.StreamOptions = options;
 			request.Method = WebMethod.Post;
-			//request.AddParameter("track", "twitter");
-			request.AddParameter("locations", "-122.75,36.8,-121.75,37.8");
+			request.AddParameter("track", "#streamingapi");
+			//request.AddParameter("locations", "-122.75,36.8,-121.75,37.8");
 
 			return client.BeginRequest(request, new RestCallback<T>((req, resp, state) =>
 			{

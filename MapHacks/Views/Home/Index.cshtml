@@ -1,7 +1,13 @@
-﻿@{
+﻿@model MapHacks.Models.AppViewModel
+
+@{
 	ViewBag.Title = "Index";
 }
 
 <div class="app-view" id="app-view">
 	<div id="map-canvas"></div>
 </div>
+
+<script type="text/javascript">
+	window.currentUser = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.UserDetails))
+</script>

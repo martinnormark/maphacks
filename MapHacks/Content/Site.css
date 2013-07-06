@@ -20,6 +20,13 @@
 	animation-delay: 1.5s;
 }
 
+button.subscribe {
+	position: absolute;
+	top: 85px;
+	left: 95px;
+	z-index: 5;
+}
+
 #panel {
 	position: absolute;
 	top: 25px;

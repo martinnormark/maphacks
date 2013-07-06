@@ -29,6 +29,7 @@ namespace MapHacks
 									"~/Scripts/App/app.js",
 									"~/Scripts/App/Views/AppView.js",
 									"~/Scripts/App/Views/MapView.js",
+									"~/Scripts/App/Views/LoginView.js",
 									"~/Scripts/App/Views/SearchBarView.js",
 									"~/Scripts/App/Views/SearchResultsView.js"));
 

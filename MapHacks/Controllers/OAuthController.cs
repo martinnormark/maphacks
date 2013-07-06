@@ -1,4 +1,5 @@
 ﻿using MapHacks.Hubs;
+using MapHacks.Models;
 using MapHacks.PresentationLogic.Twitter;
 using Microsoft.AspNet.SignalR;
 using System;
@@ -44,7 +45,7 @@ namespace MapHacks.Controllers
 			return new RedirectResult(uri.ToString(), false);
 		}
 
-		public async Task<ActionResult> Callback(string oauth_token, string oauth_verifier)
+		public ActionResult Callback(string oauth_token, string oauth_verifier)
 		{
 			var requestToken = new OAuthRequestToken { Token = oauth_token };
 
@@ -56,16 +57,14 @@ namespace MapHacks.Controllers
 			service.AuthenticateWith(accessToken.Token, accessToken.TokenSecret);
 			TwitterUser user = service.GetUserProfile(new GetUserProfileOptions());
 
-			TwitterStreamingClient streamClient = new TwitterStreamingClient("Map hacks", this._consumerKey, this._consumerSecret, new Hammock.Authentication.OAuth.OAuthToken { Token = accessToken.Token, TokenSecret = accessToken.TokenSecret });
-			IAsyncResult result = streamClient.StreamFilter("track=twitter", (artifact, response) =>
+			Session["UserDetails"] = new UserDetailsViewModel
 			{
-				TwitterStatus status = service.Deserialize<TwitterStatus>(response.Response);
-
-				IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<GeoFeedHub>();
-				hubContext.Clients.All.addTweetToMap(status);
-			});
-
-			IAsyncResult asyncResult = await Task.FromResult(result);
+				Id = user.Id,
+				UserName = user.ScreenName,
+				ProfilePictureUrl = user.ProfileImageUrlHttps,
+				AccessToken = accessToken.Token,
+				AccessTokenSecret = accessToken.TokenSecret
+			};
 
 			return RedirectToAction("Index", "Home");
 		}

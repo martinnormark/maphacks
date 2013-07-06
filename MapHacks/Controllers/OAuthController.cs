@@ -67,8 +67,6 @@ namespace MapHacks.Controllers
 
 			IAsyncResult asyncResult = await Task.FromResult(result);
 
-			ViewBag.Message = string.Format("Your username is {0}", user.ScreenName);
-
 			return RedirectToAction("Index", "Home");
 		}
 

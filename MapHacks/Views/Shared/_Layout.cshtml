@@ -8,6 +8,7 @@
 		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
+		@Styles.Render("~/Content/animate-styles")
 		@Styles.Render("~/Content/css")
 		@Scripts.Render("~/bundles/modernizr")
 	</head>
@@ -15,6 +16,7 @@
 		@RenderBody()
 
 		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/backbone")
 		<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 
 		@Scripts.Render("~/bundles/signalr")

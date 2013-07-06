@@ -4,7 +4,7 @@
 	padding: 0;
 }
 
-#map-canvas, #map_canvas {
+#map-canvas, #map_canvas, #app-view {
 	height: 100%;
 	width: 100%;
 }
@@ -12,6 +12,13 @@
 	#map-canvas img {
 		max-width: none;
 	}
+
+.search-bar {
+	-moz-animation-delay: 1.5s;
+	-o-animation-delay: 1.5s;
+	-webkit-animation-delay: 1.5s;
+	animation-delay: 1.5s;
+}
 
 #panel {
 	position: absolute;

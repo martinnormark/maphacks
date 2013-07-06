@@ -8,6 +8,16 @@
 		};
 
 		var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+		var geoFeedHubProxy = $.connection.geoFeedHub;
+
+		geoFeedHubProxy.client.addTweetToMap = function (tweet) {
+			console.log(tweet);
+		};
+
+		$.connection.hub.start()
+				.done(function (result) { console.log('Now connected, connection ID=' + $.connection.hub.id); })
+				.fail(function(){ console.log('Could not Connect!'); });
 	}
 
 	function loadScript() {
